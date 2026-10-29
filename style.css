@@ -180,56 +180,7 @@ body.home nav > :nth-child(n+3) {
     padding: 0 16px;
   }
 
-  /* 소목차가 열려도 제목과 버튼이 위아래로 흔들리지 않게 위쪽 기준으로 배치 */
-  body.home {
-    justify-content: flex-start;
-    padding-top: 26vh;
-    padding-top: 26svh;
-    padding-bottom: 40px;
-  }
-
-  body.home h1 {
-    font-size: 15px;
-    margin-bottom: 18px;
-  }
-
-  body.home nav {
-    gap: 8px;
-  }
-
-  body.home nav::before {
-    margin-top: -8px;
-  }
-
   button {
-    font-size: 12px;
-    padding: 7px 14px;
-  }
-
-  /* 소목차: 손가락으로 누르기 쉽게 한 줄씩 넓게 */
-  .submenu {
-    width: 100%;
-    max-width: 320px;
-    margin-top: 22px;
-    gap: 0;
-  }
-
-  .submenu li {
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-  }
-
-  .submenu li:last-child {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  }
-
-  .submenu a {
-    display: block;
-    padding: 12px 8px;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-
-  .submenu a:active {
-    background-color: #cafc25;
+    padding: 7px 16px;
   }
 }
