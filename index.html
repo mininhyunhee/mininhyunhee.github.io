@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>Hyunhee Choi</title>
+	<meta name="description" content="about artworks">
+	<meta name="keywords" content="페인팅, 미술">
+	<link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="icon" type="image/png" href="">
+	<meta property="og:image" content="">
+</head>
+
+<body class="home">
+	<h1>Choi Hyunhee 최현희</h1>
+
+	<nav>
+		<a href="artworks.html"><button>Artworks</button></a>
+		<a href="artist-book.html"><button>Artist Book</button></a>
+		<button id="critique-btn" aria-expanded="false" aria-controls="critique-list">Critique</button>
+		<a href="artist-statement.html"><button>Artist Statement</button></a>
+		<a href="cv.html"><button>CV</button></a>
+	</nav>
+
+	<ul id="critique-list" class="submenu" hidden>
+		<li><a href="critique-confetti-poetry.html">《Confetti Poetry》 비평 text. 최재희</a></li>
+		<li><a href="critique-essay.html">〈에세이라는 우회로〉 text. 모희</a></li>
+		<li><a href="critique-layering.html">〈떠올림이 쌓이는 방식 – 최현희의 레이어링〉 text. 이화림</a></li>
+	</ul>
+
+	<script>
+		const btn = document.getElementById("critique-btn");
+		const list = document.getElementById("critique-list");
+
+		btn.addEventListener("click", () => {
+			const open = list.hidden;
+			list.hidden = !open;
+			btn.setAttribute("aria-expanded", open);
+		});
+	</script>
+</body>
+
+</html>
