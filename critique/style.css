@@ -1,0 +1,205 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* base */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 32px auto;
+  max-width: 640px;
+
+  font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo",
+               "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #000;
+  word-break: keep-all;
+  background-color: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* headings */
+h1 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 13pt;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* text */
+p {
+  margin-bottom: 1.4em;
+  line-height: 1.7;
+  text-indent: 1em;
+}
+
+/* nav */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* button */
+button {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 999px;
+  padding: 7px 18px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:active {
+  background-color: #cafc25;
+  transform: translateY(0);
+}
+
+/* 마우스 있는 기기에서만 hover 효과 (모바일에서 누른 뒤 색이 남는 것 방지) */
+@media (hover: hover) {
+  button:hover {
+    background-color: #cafc25;
+    transform: translateY(-1px);
+  }
+}
+
+/* inline mini */
+.inline-mini button {
+  line-height: 1;
+  padding: 3px 10px;
+  font-size: 0.9em;
+}
+
+/* figure */
+figcaption {
+  font-family: monospace;
+  font-size: 11px;
+  margin-top: 6px;
+  word-break: keep-all;
+}
+
+/* footer */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* home (첫 페이지 전용) */
+body.home {
+  margin: 0;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 0 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+body.home h1 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* 목차 두 줄: Artworks, Artist Book / Critique, Artist Statement, CV */
+body.home nav {
+  justify-content: center;
+}
+
+body.home nav::before {
+  content: "";
+  order: 1;
+  flex-basis: 100%;
+  height: 0;
+  margin-top: -10px;
+}
+
+body.home nav > :nth-child(n+3) {
+  order: 2;
+}
+
+/* submenu */
+.submenu {
+  list-style: none;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.submenu[hidden] {
+  display: none;
+}
+
+.submenu a {
+  display: inline-block;
+  font-size: 13px;
+  padding: 2px 6px;
+  transition: background-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .submenu a:hover {
+    background-color: #cafc25;
+  }
+}
+
+/* footnotes */
+sup a {
+  font-size: 0.75em;
+  opacity: 0.7;
+}
+
+.notes {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.notes p {
+  text-indent: 0;
+  margin-bottom: 0.4em;
+}
+
+/* mobile */
+@media screen and (max-width: 704px) {
+  body {
+    padding: 0 16px;
+  }
+
+  button {
+    padding: 7px 16px;
+  }
+}
