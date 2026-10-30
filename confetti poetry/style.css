@@ -1,0 +1,445 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* base */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 32px auto;
+  max-width: 640px;
+
+  font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo",
+               "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #000;
+  word-break: keep-all;
+  background-color: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* headings */
+h1 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 13pt;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* text */
+p {
+  margin-bottom: 1.4em;
+  line-height: 1.7;
+  text-indent: 1em;
+}
+
+/* nav */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* button */
+button {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 999px;
+  padding: 7px 18px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:active {
+  background-color: #cafc25;
+  transform: translateY(0);
+}
+
+/* 마우스 있는 기기에서만 hover 효과 (모바일에서 누른 뒤 색이 남는 것 방지) */
+@media (hover: hover) {
+  button:hover {
+    background-color: #cafc25;
+    transform: translateY(-1px);
+  }
+}
+
+/* inline mini */
+.inline-mini button {
+  line-height: 1;
+  padding: 3px 10px;
+  font-size: 0.9em;
+}
+
+/* figure */
+figcaption {
+  font-family: monospace;
+  font-size: 11px;
+  margin-top: 6px;
+  word-break: keep-all;
+}
+
+/* footer */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* home (첫 페이지 전용) */
+body.home {
+  margin: 0;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 0 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+body.home h1 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* 목차 두 줄 (nav 2개로 분리) */
+body.home nav {
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+body.home nav:last-of-type {
+  margin-bottom: 0;
+}
+
+/* submenu: 스르륵 펼쳐지는 목차 */
+.submenu-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  max-width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.45s ease,
+    opacity 0.35s ease,
+    visibility 0s linear 0.45s;
+}
+
+.submenu-wrap.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    grid-template-rows 0.45s ease,
+    opacity 0.45s ease 0.05s,
+    visibility 0s;
+}
+
+.submenu {
+  list-style: none;
+  overflow: hidden;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.submenu li:first-child {
+  margin-top: 10px;
+}
+
+.submenu li:last-child {
+  margin-bottom: 10px;
+}
+
+.submenu a {
+  display: inline-block;
+  font-size: 13px;
+  padding: 2px 6px;
+  transition: background-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .submenu a:hover {
+    background-color: #cafc25;
+  }
+}
+
+/* 움직임 줄이기 설정을 켠 사용자는 애니메이션 없이 */
+@media (prefers-reduced-motion: reduce) {
+  .submenu-wrap,
+  .submenu-wrap.open {
+    transition: none;
+  }
+}
+
+/* contact */
+.contact {
+  margin-top: 36px;
+  font-size: 12px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.contact p {
+  text-indent: 0;
+  margin-bottom: 0;
+}
+
+.contact span {
+  margin-right: 8px;
+  opacity: 0.5;
+}
+
+.contact a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+/* ===== 전시 페이지 ===== */
+
+.back {
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+/* 상단 소개: 포스터, 제목은 중앙 / 본문은 왼쪽 */
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.intro .poster {
+  display: block;
+  width: 50%;
+  max-width: 280px;
+  height: auto;
+  margin: 0 auto 28px;
+}
+
+.intro h1,
+.intro .info {
+  text-align: center;
+  text-indent: 0;
+}
+
+.intro .text p:not(.info) {
+  text-align: left;
+}
+
+/* ===== 슬라이더 ===== */
+
+.slide-block {
+  text-align: center;
+}
+
+.stage {
+  position: relative;
+  padding: 0 40px;
+}
+
+.viewport {
+  overflow: hidden;
+  touch-action: pan-y;      /* 세로 스크롤은 유지, 가로 스와이프는 슬라이더가 처리 */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.viewport:active {
+  cursor: grabbing;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.24, 1);
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  margin: 0;
+  opacity: 0.35;
+  transition: opacity 0.8s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* 화살표: 틀 양옆 세로 중앙 */
+.nav {
+  position: absolute;
+  top: calc(50% - 16px);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.nav.prev { left: 0; }
+.nav.next { right: 0; }
+
+.nav:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.nav:disabled:hover {
+  background-color: #fff;
+  transform: none;
+}
+
+.counter {
+  margin-top: 14px;
+  font-family: monospace;
+  font-size: 11px;
+  text-indent: 0;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.slider-caption {
+  font-family: monospace;
+  font-size: 11px;
+  text-indent: 0;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* 작품: 고정 높이 틀 안에서 가운데 정렬 */
+.works {
+  --h: min(62vh, 480px);
+  margin-top: 56px;
+}
+
+.works .nav {
+  top: calc(var(--h) / 2 - 16px);
+}
+
+.works .frame {
+  height: var(--h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.works .frame img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.works figcaption {
+  min-height: 3.4em;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.installation {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .slide {
+    transition: none;
+  }
+}
+
+/* 크레딧 */
+.credits {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #000;
+  font-size: 12px;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.credits p {
+  text-indent: 0;
+  margin-bottom: 0;
+}
+
+/* mobile */
+@media screen and (max-width: 704px) {
+  body {
+    padding: 0 16px;
+  }
+
+  button {
+    padding: 7px 16px;
+  }
+
+  .slider-ui button {
+    padding: 3px 12px;
+  }
+
+  .intro .poster {
+    width: 60%;
+  }
+}
+
+/* 사진 크기 줄이기 */
+.installation .stage {
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.works {
+  --h: min(46vh, 340px);
+}
+
+.works .stage {
+  max-width: 400px;
+  margin: 0 auto;
+}
