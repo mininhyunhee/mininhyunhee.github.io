@@ -16,18 +16,29 @@
 	<h1>Choi Hyunhee 최현희</h1>
 
 	<nav>
-		<a href="artworks.html"><button>Exhibition</button></a>
+		<button data-toggle="exhibition-list" aria-expanded="false" aria-controls="exhibition-list">Exhibition</button>
 		<a href="artist-book.html"><button>Artist Book</button></a>
-		<button id="critique-btn" aria-expanded="false" aria-controls="critique-list">Critique</button>
+	</nav>
+
+	<div id="exhibition-list" class="submenu-wrap">
+		<ul class="submenu">
+			<li><a href="https://mininhyunhee.github.io/confetti poetry/">《Confetti Poetry》</a></li>
+		</ul>
+	</div>
+
+	<nav>
+		<button data-toggle="critique-list" aria-expanded="false" aria-controls="critique-list">Critique</button>
 		<a href="https://mininhyunhee.github.io/text/"><button>Text</button></a>
 		<a href="https://mininhyunhee.github.io/cv"><button>CV</button></a>
 	</nav>
 
-	<ul id="critique-list" class="submenu" hidden>
-	<li><a href="https://mininhyunhee.github.io/choijaehee/">《Confetti Poetry》 비평 text. 최재희</a></li>
-	<li><a href="https://mininhyunhee.github.io/mohee/">〈에세이라는 우회로〉 text. 모희</a></li>
-	<li><a href="https://brunch.co.kr/@piezetheday/19">〈떠올림이 쌓이는 방식 – 최현희의 레이어링〉 text. 이화림</a></li>
-</ul>
+	<div id="critique-list" class="submenu-wrap">
+		<ul class="submenu">
+			<li><a href="https://mininhyunhee.github.io/choijaehee/">《Confetti Poetry》 비평 text. 최재희</a></li>
+			<li><a href="https://mininhyunhee.github.io/mohee/">〈에세이라는 우회로〉 text. 모희</a></li>
+			<li><a href="https://brunch.co.kr/@piezetheday/19">〈떠올림이 쌓이는 방식 – 최현희의 레이어링〉 text. 이화림</a></li>
+		</ul>
+	</div>
 
 	<div class="contact">
 		<p><span>mail</span><a href="mailto:saesang1221@naver.com">saesang1221@naver.com</a></p>
@@ -35,13 +46,23 @@
 	</div>
 
 	<script>
-		const btn = document.getElementById("critique-btn");
-		const list = document.getElementById("critique-list");
+		const toggles = document.querySelectorAll("[data-toggle]");
+		const menus = document.querySelectorAll(".submenu-wrap");
 
-		btn.addEventListener("click", () => {
-			const open = list.hidden;
-			list.hidden = !open;
-			btn.setAttribute("aria-expanded", open);
+		toggles.forEach((btn) => {
+			btn.addEventListener("click", () => {
+				const target = document.getElementById(btn.dataset.toggle);
+				const willOpen = !target.classList.contains("open");
+
+				// 다른 목차는 모두 닫기
+				menus.forEach((m) => m.classList.remove("open"));
+				toggles.forEach((b) => b.setAttribute("aria-expanded", "false"));
+
+				if (willOpen) {
+					target.classList.add("open");
+					btn.setAttribute("aria-expanded", "true");
+				}
+			});
 		});
 	</script>
 </body>
